@@ -10,8 +10,27 @@ export default function App() {
 		setResultado(r);
 		
 	}
+	function menos (){
+		let r= parseFloat(valor1) - parseFloat(valor2);
+		setResultado(r);
+		
+	}
+	function dividir (){
+		let r= parseFloat(valor1) / parseFloat(valor2);
+		setResultado(r);
+		
+	}
+	function vezes (){
+		let r= parseFloat(valor1) * parseFloat(valor2);
+		setResultado(r);
+		
+	}
+	function exponencial(){
+		let r= parseFloat(valor1) ** parseFloat(valor2);
+		setResultado(r);
+	}
   return (
-    <View style={styles.	  ntainer}>
+    <View style={styles.container}>
 		<View style={styles.bloco}>
 		  <Text style={styles.titulo}>Calculadora simples</Text> 
 		</View>
@@ -38,6 +57,38 @@ export default function App() {
 			  onPress={somar}
 			  >
 			  <Text style={styles.textoBotao}>SOMAR</Text>
+			  </TouchableOpacity>
+		  </View>
+		  <View style={styles.bloco}>
+		  <TouchableOpacity 
+			  style={styles.botao}
+			  onPress={menos}
+			  >
+			  <Text style={styles.textoBotao}>SUBTRAIR</Text>
+			  </TouchableOpacity>
+		  </View>
+		  <View style={styles.bloco}>
+		  <TouchableOpacity 
+			  style={styles.botao}
+			  onPress={dividir}
+			  >
+			  <Text style={styles.textoBotao}>DIVIDIR</Text>
+			  </TouchableOpacity>
+		  </View>
+		   <View style={styles.bloco}>
+		  <TouchableOpacity 
+			  style={styles.botao}
+			  onPress={vezes}
+			  >
+			  <Text style={styles.textoBotao}>MULTIPLICAR</Text>
+			  </TouchableOpacity>
+		  </View>
+		  <View style={styles.bloco}>
+		  <TouchableOpacity 
+			  style={styles.botao}
+			  onPress={exponencial}
+			  >
+			  <Text style={styles.textoBotao}>EXPONENCIAL</Text>
 			  </TouchableOpacity>
 		  </View>
 		  <View style={styles.bloco}>
