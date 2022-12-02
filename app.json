@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bhenriqueds",
-    "slug": "bhenriqueds",
+    "name": "combustivel",
+    "slug": "combustivel",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,9 +28,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "packagerOpts": {
-      "port": 56329
     }
   }
 }

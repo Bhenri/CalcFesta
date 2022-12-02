@@ -1,132 +1,99 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react'; 
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import Calcula from './components/Calcula.js';
 
 export default function App() {
-	const [valor1, setValor1] = useState("20");
-	const [valor2, setValor2] = useState("3");
-	const [resultado,setResultado] =useState("");
-	function somar (){
-		let r= parseFloat(valor1) + parseFloat(valor2);
-		setResultado(r);
-		
-	}
-	function menos (){
-		let r= parseFloat(valor1) - parseFloat(valor2);
-		setResultado(r);
-		
-	}
-	function dividir (){
-		let r= parseFloat(valor1) / parseFloat(valor2);
-		setResultado(r);
-		
-	}
-	function vezes (){
-		let r= parseFloat(valor1) * parseFloat(valor2);
-		setResultado(r);
-		
-	}
-	function exponencial(){
-		let r= parseFloat(valor1) ** parseFloat(valor2);
-		setResultado(r);
-	}
+
+  const [inputQtd, setInputQtd] = useState(0);
+  const [qtd, setQtd] = useState(0);
+
+  function enviaValor(){
+    setQtd(inputQtd);
+  }
+
   return (
     <View style={styles.container}>
-		<View style={styles.bloco}>
-		  <Text style={styles.titulo}>Calculadora simples</Text> 
-		</View>
-    
-	  	<View style={styles.bloco}>
-		  <Text>Valor 1:</Text>
-			  <TextInput style={styles.input}
-				  value={valor1}
-				  onChangeText = {(valor)=>setValor1(valor)}
-				  keyboardType="numeric"
-				/>
-		  </View>
-		  <View style={styles.bloco}>
-		  <Text>Valor 2:</Text>
-			  <TextInput style={styles.input}
-				  value={valor2}
-				  onChangeText = {(valor)=>setValor2(valor)}
-				  keyboardType="numeric"
-				  />
-		  </View>
-		  <View style={styles.bloco}>
-		  <TouchableOpacity 
-			  style={styles.botao}
-			  onPress={somar}
-			  >
-			  <Text style={styles.textoBotao}>SOMAR</Text>
-			  </TouchableOpacity>
-		  </View>
-		  <View style={styles.bloco}>
-		  <TouchableOpacity 
-			  style={styles.botao}
-			  onPress={menos}
-			  >
-			  <Text style={styles.textoBotao}>SUBTRAIR</Text>
-			  </TouchableOpacity>
-		  </View>
-		  <View style={styles.bloco}>
-		  <TouchableOpacity 
-			  style={styles.botao}
-			  onPress={dividir}
-			  >
-			  <Text style={styles.textoBotao}>DIVIDIR</Text>
-			  </TouchableOpacity>
-		  </View>
-		   <View style={styles.bloco}>
-		  <TouchableOpacity 
-			  style={styles.botao}
-			  onPress={vezes}
-			  >
-			  <Text style={styles.textoBotao}>MULTIPLICAR</Text>
-			  </TouchableOpacity>
-		  </View>
-		  <View style={styles.bloco}>
-		  <TouchableOpacity 
-			  style={styles.botao}
-			  onPress={exponencial}
-			  >
-			  <Text style={styles.textoBotao}>EXPONENCIAL</Text>
-			  </TouchableOpacity>
-		  </View>
-		  <View style={styles.bloco}>
-		  <Text style={styles.titulo}>
-			  RESULTADO: {resultado}
-			  </Text>
-		  </View>
-	</View>				
-	 
+
+      {/* TITULO */}
+      <View style={styles.box}>
+        <Text 
+          style={styles.title}
+        >Calculadora de Festa
+        </Text>
+      </View>
+      {/* FIM TITULO */}
+
+      {/* BODY */}
+      <View style={styles.boxBody}>
+        <Text 
+          style={styles.label}
+        >Qtd. Convidados:
+        </Text>
+        <TextInput
+          style={styles.input}
+          value={inputQtd}
+          onChangeText={(value) => setInputQtd(value)}
+        />
+        <TouchableOpacity style={styles.btn}>
+          <Text 
+            style={styles.btnText}
+            onPress={enviaValor}
+          >CALCULAR
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.res}>
+        <Calcula qtd={qtd} />
+      </View>
+      {/* FIM BODY */}
+
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-	  backgroundColor: '#FF5733'
+    backgroundColor: '#fff' 
   },
-	bloco:{
-		marginTop:20,
-		width:'80%',
-		marginLeft:'10%'
-	},
-	titulo:{
-		fontSize:30,
-		textAlign:'center'
-	},
-	input:{
-		borderWidth:2,
-		fontSize:20,
-		borderRadius:10
-	},
-	botao:{
-		backgroundColor:'blue',
-		borderRadius:10
-	},
-	textoBotao:{
-		color: '#fff',
-		textAlign:'center',
-		fontSize:20
-	}
+
+  box: {
+    position: 'relative'
+  },
+
+  title: {
+    fontSize: 30,
+    textAlign: 'center'
+  },
+
+  boxBody: {
+    position: 'relative',
+    marginTop: '8%',
+    marginHorizontal: '5%'
+  },
+
+  label: {
+    fontSize: 20
+  },
+
+  input: {
+    backgroundColor: '#D2D5D9',
+    borderRadius: 5,
+    height: 50
+  },
+
+  btn: {
+    position: 'relative',
+    backgroundColor: '#1C1C1C',
+    width: 150,
+    padding: 10,
+    borderRadius: 10,
+    marginTop: '8%'
+  },
+
+  btnText: {
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+  },
 });
